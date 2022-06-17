@@ -55,4 +55,25 @@ public class Student {
 	public String toString() {
 		return name;
 	}
+
+	public boolean hasPassed(Course course) {
+		for (Map.Entry<Term, Map<Course, Double>> tr : transcript.entrySet())
+			for (Map.Entry<Course, Double> r : tr.getValue().entrySet())
+				if (r.getKey().equals(course) && r.getValue() >= 10)
+					return true;
+
+		return false;
+	}
+
+	public double getGPA() {
+		double points = 0;
+		int totalUnits = 0;
+		for (Map.Entry<Term, Map<Course, Double>> tr : transcript.entrySet()) {
+			for (Map.Entry<Course, Double> r : tr.getValue().entrySet()) {
+				points += r.getValue() * r.getKey().getUnits();
+				totalUnits += r.getKey().getUnits();
+			}
+		}
+		return points / totalUnits;
+	}
 }
