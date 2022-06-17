@@ -54,7 +54,7 @@ public class EnrollCtrlTest {
 	}
 
 	private boolean hasTaken(Student s, Course...courses) {
-	    Set<Course> coursesTaken = new HashSet<>();
+		Set<Course> coursesTaken = new HashSet<>();
 		for (Student.CourseSection cs : s.getCurrentTerm())
 				coursesTaken.add(cs.course);
 		for (Course course : courses) {

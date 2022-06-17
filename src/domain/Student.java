@@ -5,17 +5,17 @@ import java.util.List;
 import java.util.Map;
 
 public class Student {
+	static class CourseSection {
+		CourseSection(Course course, int section) {
+			this.course = course;
+			this.section = section;
+		}
+		Course course;
+		int section;
+	}
+
 	private String id;
 	private String name;
-
-	static class CourseSection {
-        CourseSection(Course course, int section) {
-            this.course = course;
-            this.section = section;
-        }
-        Course course;
-	    int section;
-    }
 	private Map<Term, Map<Course, Double>> transcript;
 	private List<CourseSection> currentTerm;
 
@@ -35,16 +35,16 @@ public class Student {
 	}
 
 	public void addTranscriptRecord(Course course, Term term, double grade) {
-	    if (!transcript.containsKey(term))
-	        transcript.put(term, new HashMap<>());
-	    transcript.get(term).put(course, grade);
-    }
+		if (!transcript.containsKey(term))
+			transcript.put(term, new HashMap<>());
+		transcript.get(term).put(course, grade);
+	}
 
-    public List<CourseSection> getCurrentTerm() {
-        return currentTerm;
-    }
+	public List<CourseSection> getCurrentTerm() {
+		return currentTerm;
+	}
 
-    public String getId() {
+	public String getId() {
 		return id;
 	}
 
